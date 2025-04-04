@@ -35,6 +35,14 @@ function TableBody(props) {
    );
 }
 
+function ClearButton(props) {
+  return (
+    <button onClick={() => props.clearTable()}>
+      Clear Table
+    </button>
+  )
+}
+
 function Table(props) {
   return (
     <table>
@@ -43,6 +51,8 @@ function Table(props) {
         characterData={props.characterData}
         removeCharacter={props.removeCharacter}
       />
+      <p/>
+      <ClearButton clearTable = {props.clearTable} />
     </table>
 );
 }
