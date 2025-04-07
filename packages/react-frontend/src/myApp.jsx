@@ -12,6 +12,11 @@ function MyApp() {
     setCharacters(updated);
   }
 
+  function clearTable() {
+    const cleared = [];
+    setCharacters(cleared);
+  }
+
   function updateList(person) {
     setCharacters([...characters, person]);
   }
@@ -21,6 +26,7 @@ function MyApp() {
       <Table 
         characterData={characters}
         removeCharacter={removeOneCharacter}  
+        clearTable={clearTable}
       />
       <Form handleSubmit={updateList}/>
     </div>
