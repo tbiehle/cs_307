@@ -51,6 +51,12 @@ const findUserByID = (id) => {
   );
 };
 
+const removeUserByID = (id) => {
+  return users.users_list.filter(
+    (user) => user.id !== id
+  );
+};
+
 const addUser = (user) => {
   users.users_list.push(user);
   return user;
@@ -81,6 +87,12 @@ app.post("/users", (req, res) => {
   const userToAdd = req.body;
   addUser(userToAdd);
   res.send();
+});
+
+app.delete("/users/:id", (req, res) => {
+  const id = req.params.id;
+  users.users_list = removeUserByID(id);
+  res.send(users);
 });
 
 app.listen(port, () => {
