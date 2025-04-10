@@ -45,15 +45,17 @@ function ClearButton(props) {
 
 function Table(props) {
   return (
-    <table>
-      <TableHeader />
-      <TableBody 
-        characterData={props.characterData}
-        removeCharacter={props.removeCharacter}
-      />
+    <div>
+      <table>
+        <TableHeader />
+        <TableBody 
+          characterData={props.characterData}
+          removeCharacter={props.removeCharacter}
+        />
+      </table>
       <p/>
       <ClearButton clearTable = {props.clearTable} />
-    </table>
+    </div>
 );
 }
 
