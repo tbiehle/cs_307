@@ -6,10 +6,20 @@ function MyApp() {
   const [characters, setCharacters] = useState([]);
 
   function removeOneCharacter(index) {
+    let id;
     const updated = characters.filter((character, i) => {
+      if (i === index) {
+        id = character.id;
+      }
       return i !== index;
     });
     setCharacters(updated);
+
+    const promise = fetch(`http://localhost:8000/users/${id}`, {
+      method: "DELETE",
+    });
+
+    return promise;
   }
 
   function clearTable() {
@@ -20,9 +30,11 @@ function MyApp() {
   function updateList(person) {
     postUser(person)
       .then((res) => {
-        if (res.status == 201) { setCharacters([...characters, person]) }
-        else { throw WebTransportError }
-      })
+        if (res.status === 201) { return res.json() }
+        else { throw new Error("Failed to create user") }
+      }).then((newUser) => {
+        setCharacters([...characters, newUser]);
+      }) 
       .catch((error) => console.log(error));
   }
 
