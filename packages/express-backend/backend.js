@@ -65,6 +65,10 @@ const removeUserByID = (id) => {
   );
 };
 
+function generateID() {
+  return Math.floor(Math.random() * 100);
+}
+
 const addUser = (user) => {
   users.users_list.push(user);
   return user;
@@ -98,9 +102,13 @@ app.get("/users/:id", (req, res) => {
 });
 
 app.post("/users", (req, res) => {
-  const userToAdd = req.body;
+  const id = generateID().toString();
+  const userToAdd = {
+    id: id,
+    ...req.body
+  };
   addUser(userToAdd);
-  res.status(201).send("Successfully created user");
+  res.status(201).send(userToAdd);
 });
 
 app.delete("/users/:id", (req, res) => {
