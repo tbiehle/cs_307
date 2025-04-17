@@ -9,7 +9,7 @@ function MyApp() {
     let id;
     const updated = characters.filter((character, i) => {
       if (i === index) {
-        id = character.id;
+        id = character._id;
       }
       return i !== index;
     });
