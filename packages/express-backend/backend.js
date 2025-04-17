@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import User from "user";
+import { addUser, getUsers, findUserById, findUserByName, findUserByJob } from "user-services";
 
 const app = express();
 const port = 8000;
