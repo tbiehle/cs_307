@@ -1,1 +1,1 @@
-welcome to my awesome CS 307 app and github page
+README for Google 2 team
